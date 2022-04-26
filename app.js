@@ -68,7 +68,9 @@ const person1 = {
 // Assignment 4: -------
 // ------------------------------
 
-// ***********
+// ********************************
+// ********************************
+// ********************************
 
 let retreatMessage = 'We no longer wish to conquer your planet. It is full of dogs, which we do not care for.';
 
@@ -85,7 +87,9 @@ let alienShip = {
 alienShip.retreat(); //object.method -- This is calling the retreat() method created above. There is no need to write console.log(retreat) or console.log(retreat()) (these won't work) because the console.logging of it was done when the method was created. 
 alienShip.takeOff(); //see one line above
 
-// *************
+// ********************************
+// ********************************
+// ********************************
 
 let manUtd = {
     sponsorships: {
@@ -154,3 +158,115 @@ const spaceship = {
   console.log(spaceship.color);
   changePlanet(spaceship);
   console.log(spaceship.homePlanet);
+
+
+// ********************************
+// ********************************
+// ********************************
+
+let spaceship1 = {
+    'Fuel Type' : 'Turbo Fuel',
+    homePlanet : 'Earth'
+  }; //this is the spaceship object, it has two key/value pairs
+  
+  let greenEnergy = obj => {
+    obj['Fuel Type'] = 'avocado oil'
+  }; //this is the greenEnergy function, the obj in the "= obj =>" is the single parameter. the reason the ['Fuel Type'] is in brackets and not a .method is because it will call on the 'Fuel Type' key in the spaceship. So when greenEnergy(spaceship); is called below it will replace it. If we had done this instead "obj.fuelType" it would have **added** a fuel type, not replaced it. The function therefore looks for a key called 'Fuel Type' when an object is passed into it. 
+  
+  let remotelyDisable = obj => {
+    obj.disabled = true;
+  }; //unlike the greenEnergy function this function is creating a new key/value pair in whatever object is passed into it. 
+  
+  greenEnergy(spaceship1); //this is passing the spaceship object into the greenEnergy function. note in the function it searches for a ['Fuel Type'] key in whatever object is being passed into it.
+  remotelyDisable(spaceship1); //this is passing the spaceship object into the remotelyDisable function.
+  console.log(spaceship1); //this is logging the spaceship object to the console.
+// Output:
+// { 'Fuel Type': 'avocado oil',
+//   homePlanet: 'Earth',
+//   disabled: true }
+
+// ********************************
+// ********************************
+// ********************************
+
+let spaceship2 = {
+    crew: {
+      captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+      },
+      'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+      },
+      medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+      translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+      }
+    }
+  }; 
+   
+  // for...in
+  for (let crewMember in spaceship2.crew) {
+    console.log(`${crewMember}: ${spaceship2.crew[crewMember].name}`);
+  }
+
+
+// ****************************
+// ****************************
+// ****************************
+
+
+
+let spaceship3 = {
+    crew: {
+    captain: { 
+        name: 'Lily', 
+        degree: 'Computer Engineering', 
+        cheerTeam() { console.log('You got this!') } 
+        },
+    'chief officer': { 
+        name: 'Dan', 
+        degree: 'Aerospace Engineering', 
+        agree() { console.log('I agree, captain!') } 
+        },
+    medic: { 
+        name: 'Clementine', 
+        degree: 'Physics', 
+        announce() { console.log(`Jets on!`) } },
+    translator: {
+        name: 'Shauna', 
+        degree: 'Conservation Science', 
+        powerFuel() { console.log('The tank is full!') } 
+        }
+    }
+}; 
+
+console.log('****************************')
+
+for  (let i in spaceship3.crew) { //the "i" (and "pie" & "test" below) iterate all the crew Roles, which are the first nested objects after the spaceship object. The Roles themselves are objects. 
+  console.log(`${i} : ${spaceship3.crew[i].name}`) //the first ${i} (because we've iterated over the first level objects in the "let i in spaceship3" line) will just print the Roles of the crew. The "${spaceship3.crew[i].name}" accesses the spaceship.thenthecrew.[i]then the role which has been iterated through above and then the .name accesses the name key and gives the value.
+};
+
+for (let pie in spaceship3.crew) {
+  console.log(`${spaceship3.crew[pie].name} : ${spaceship3.crew[pie].degree}`)
+}
+
+console.log('****************************')
+
+for (let test in spaceship3.crew) { //prints out the crew roles. all the objects that come after spaceship and crew.  
+    console.log(test)
+};
+
+console.log('****************************')
+
+for (let test2 in spaceship3) {
+    console.log(test2)
+}; //should just print crew --just tested, i was right. yay. 
