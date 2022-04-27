@@ -42,15 +42,25 @@ a:hover {
     background-color: #FF1493;
   }
 
-  div {
+  #testdiv {
         width: 900px;
         height: 450px;
         background: #FFB6C1;
         transition: background-color 2s ease-out 100ms;
         z-index: 1;
+        margin-bottom: 100px;
   } 
   
 
-  div:hover {
+  #testdiv:hover {
     background-color: #FF1493;
+  }
+
+  form {
+      text-align: center;
+      background-color: lightcyan;
+      padding-bottom: 20em;
+      width: 50vw;
+      margin: auto;
+      padding-top: 30px;
   }

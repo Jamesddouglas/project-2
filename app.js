@@ -411,5 +411,53 @@ mejames.poke();
 console.log(mejames);
 console.log('**************');
 
+// ***************************
+// ***************************
+// ***************************
 
+const sith = {
+        name: 'Darth Revan',
+        title: 'Dark Lord of the Sith',
+        apprentice: 'Malak the Meatbag',
+        lightsaberColor: 'purple and red',
+        lightning() {
+            console.log('Time to die for your betrayal Malak!');
+        }
+} //I've created the greatest object of all, Darth Revan himself. 
 
+console.log(sith); //this logs all the sith object
+const apprentice = sith.apprentice; //this creates a variable by accessing the sith.apprentice key. 
+console.log(apprentice); //i've logged the variable apprentice and it will print 'Malak the Meatbag' in the console
+sith.lightning(); //this will call on the method 'lightning' created in the sith object and print 'Time to die for your betrayal Malak!'
+console.log('***************')
+console.log('***************')
+console.log('***************')
+const { title } = sith;
+console.log(title);
+const { name } = sith;
+console.log(name);
+const newSith = Object.assign({'Badass Costume': true});
+console.log(newSith);
+
+console.log('***************')
+
+function jedi(goesBy, rank, lightsaberColor, planetVisited) {
+    return {
+    goesBy,
+    rank,
+    lightsaberColor,
+    planetVisited,
+    maythe(){
+        console.log(`I am ${goesBy}, a ${rank}. my lightsaber color is ${lightsaberColor} and I have just come from ${planetVisited}`);
+        }
+    }
+};
+
+const anakin = jedi('Anakin Skywalker', 'jedi knight', 'blue', 'Naboo');
+console.log(anakin);
+anakin.maythe();
+const obiWan = jedi('Obi Wan Kenobi', 'Jedi Master', 'blue', 'Geonosis');
+console.log(obiWan.rank)
+obiWan.maythe();
+
+console.log('***************')
