@@ -270,3 +270,146 @@ console.log('****************************')
 for (let test2 in spaceship3) {
     console.log(test2)
 }; //should just print crew --just tested, i was right. yay. 
+
+console.log('****************************')
+
+const godfather = {
+    cast: {
+        'Michael Corlone': {
+            personality : 'cunning and ruthless',
+            position : 'Don Corleone',
+            'played by' : 'Al Pacino',
+            oscar() {
+                console.log(this)
+            },
+        },
+        'Fredo Corleone': {
+            personality : 'weak',
+            position : 'dead',
+            'played by' : 'Chris Cuomo'
+        },
+        'Vito Corlone': {
+            personality : 'strong and moral',
+            position : 'Godfather',
+            'played by' : 'Marlon Brando'
+        },    
+    },
+    reviews: {
+        me: {
+            review: 'this is the best film ever',
+        },
+        cretin: {
+            review: 'this isn\'t the best film ever',
+        },
+        craig: {
+            review: 'it pleases me i showed Don Juice this film',
+        },
+    }
+};
+
+for (let god in godfather.cast) {
+    console.log(`the cast is ${god}`)
+};
+
+console.log('****************************');
+
+// godfather.cast['Michael Corleone'].oscar();
+
+const greatestFilmEver = {
+    nameOfFilm : 'Godfather',
+    reviews : 'I love this film',
+    peopleWhoShouldBePokedInTheEye : 'people who say its a bad film',
+    oscarGoesTo() {
+        console.log(this);
+    }
+};
+
+greatestFilmEver.oscarGoesTo();
+
+console.log('****************************');
+
+const nalaPuppy = {
+    louisewarning : 'growl warning off evil',
+    cutestPuppyEver : true,
+    'favourite place' : 'the back garden',
+    'favourite foods' : 'ribeye steak, duck, gammon',
+    'is obedient all the time' : false,
+    sound() {
+        console.log('woof!');
+    },
+    evil() {
+        console.log(this.louisewarning); //the reason "this" is needed in a method inside an object is because the evil() method has no access to the key louisewarning!!! if we just put console.log(louisewarning) the "nalaPuppy.evil()" should logged undefined in the console. "this" is reference to the current object you're write methods and functions into.  
+    },
+    puppypower() {
+        console.log(`True or false, Nala is the cutest puppy ever? : ${this.cutestPuppyEver}`);
+    }
+};``
+
+nalaPuppy.sound();
+nalaPuppy.evil();
+nalaPuppy.puppypower();
+console.log(nalaPuppy['favourite foods']);
+
+
+// ***************************
+// ***************************
+// ***************************
+
+console.log('***************************')
+
+const personcraig = {
+	firstName: 'Craigus', //please remember to put '' marks around values
+	secondName: 'Maximus',
+	fullName() { 
+	  console.log(`${this.firstName} ${this.secondName} is a peehole`); //we could also use return like this -- return `${this.firstName} ${this.secondName} is a peehole` -- notice () aren't needed like the console.log
+	}
+};
+
+personcraig.fullName(); //it's a function so it needs (). 
+
+//getters and setter are more useful in terms of writing the code above.
+//getters are used to access properties in an object
+//setters are used to change or mutate them
+//so in the object about craigus maximus above we can use a getter to get the fullname, and setters to set the name from the outside. 
+
+const personcraig1 = {
+	firstName: 'Craigus', //please remember to put '' marks around values
+	secondName: 'Maximus',
+    thirdName: 'The Second',
+	get fullName() { //this is the only change needed to set the above code to a getter 
+	  return `${this.firstName} ${this.secondName} ${this.thirdName} is a peehole`;
+	},
+    set fullName(value) { //the (value) is the parameter
+        const parts = value.split(' '); //the const parts is a variable. the value parameter has been split by the .split method and we've spaced a space in. 
+            this.firstName = parts[0]; //this is refering the current object remember
+            this.secondName = parts[1]; //the parts indexing ensures they'll be seperated by spaces because of the .split method placed on the parameter value. 
+            this.thirdName = parts[2]; 
+    }
+};
+
+personcraig1.fullName = 'Don James Juice';
+console.log(personcraig1);
+console.log('*****************');
+
+
+//below is a Factory Function
+function createCraig(name, radius) {
+    return {
+    name,    
+    radius, //because we have radius as a parameter, we don't need to assign a value to the radius key
+    poke(){
+        console.log('poke ' + name + ' in the eye because of this radius: ' + radius);
+        }
+    }
+};
+
+const minionCraig = createCraig('Craig', 1000000); //1. this declares a variable minionCraig, and we're passing it into the createCraig function made above. this will set craigs radius to a million. 
+console.log(minionCraig);
+minionCraig.poke();
+const mejames = createCraig('James', 300);
+mejames.poke();
+console.log(mejames);
+console.log('**************');
+
+
+
